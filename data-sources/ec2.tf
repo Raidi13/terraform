@@ -1,19 +1,14 @@
 # Use the existing security group in your resources (e.g., EC2 instance)
   resource "aws_instance" "expense" {
-    count = length (var.instance_names)
-    ami           = data.aws_ami.joindevops.id
+    ami    = data.aws_ami.joindevops.id
     instance_type = "t3.micro"
     vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id] # Use the security group ID from the data source
     # tags = {
     # Name = var.instance_names[count.index]
     # }
-    tags = merge(
-      var.common_tags,
-      {
-      Name = var.instance_names[count.index]
+    tags = {
+      Name = "terraform"
     }
-    )
-
 } 
   resource "aws_security_group" "allow_ssh_terraform" {
     name   = "allow_sshh"
@@ -41,5 +36,4 @@
       Name = "allow_sshh"
     }
   
-    
 }
