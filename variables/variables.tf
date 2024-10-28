@@ -25,7 +25,7 @@ variable "sg_name" {
 }
 
 variable "sg_description" {
-    default = "Allow port number 22 for ssh access"
+    default = "Allow port number 22 for SSH access"
 }
 variable  "from_port" {
     default = 22
