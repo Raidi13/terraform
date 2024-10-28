@@ -16,9 +16,7 @@ Below is the environment setup.
 aws configure
 ```
 * Add the terraform path to system variables.
-
-![alt text](<../../../../Users/RAIDI KARTHEEK/Downloads/terraform.svg>)
-
+![terraform](https://github.com/user-attachments/assets/25f439ba-b4ed-4465-a84a-84ca4dc7e9fa)
 
 Terraform is popular IaC (Infrastructure as a Code) tool. It is best in the market now.
 
