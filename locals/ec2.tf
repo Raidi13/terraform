@@ -4,14 +4,14 @@ resource "aws_instance" "terraform" {
   instance_type = var.instance_name[count.index] == "mysql" ? "t3.small" : "t3.micro"
 
   # Use the security group ID from the data source
-  vpc_security_group_ids = [aws_security_group.allow_sshh_terraform.id]
+  vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id]
 
   tags = {
     Name = var.instance_name[count.index]
   }
 }
-resource "aws_security_group" "allow_sshh_terraform" {
-  name        = "allow_sshh_raidi"
+resource "aws_security_group" "allow_ssh_terraform" {
+  name        = "allow_sshh"
   description = "Allow port number 22 for SSH access"
 
 
@@ -33,7 +33,17 @@ resource "aws_security_group" "allow_sshh_terraform" {
   }
 
   tags = {
-    Name = "allow_sshh_raidi"
+    Name = "allow_sshh"
   }
 
+}
+# if prod create t3.medium , otherwise create t3.micro.
+
+resource "aws_instance" "elasticsearch" {
+  ami = data.aws_ami.ami_info.id
+  instance_type = local.instance_type
+  vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id]
+  tags = {
+    Name = "terraform"
+  }
 }

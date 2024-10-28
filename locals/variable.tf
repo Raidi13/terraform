@@ -3,6 +3,9 @@ variable "instance_name" {
   default     = ["mysql", "backend", "frontend"]
   description = "description"
 }
+variable "environment" {
+  default = "prod"
+}
 
 # variable "domain_name" {
 #   default = "aws-dev-rk.online"
