@@ -3,7 +3,7 @@
     count = length (var.instance_names)
     ami           = data.aws_ami.joindevops.id
     instance_type = "t3.micro"
-    vpc_security_group_ids = [aws_security_group.allow_sshh_terraform.id] # Use the security group ID from the data source
+    vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id] # Use the security group ID from the data source
     # tags = {
     # Name = var.instance_names[count.index]
     # }
@@ -15,7 +15,7 @@
     )
 
 } 
-  resource "aws_security_group" "allow_sshh_terraform" {
+  resource "aws_security_group" "allow_ssh_terraform" {
     name   = "allow_sshh"
     description = "Allow port number 22 for SSH access"
 
@@ -40,7 +40,7 @@
   tags = merge(
       var.common_tags,
       {
-      Name = "allow_sshh_raidi"
+      Name = "allow_sshh"
     }
   )
     
