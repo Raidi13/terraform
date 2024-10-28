@@ -1,5 +1,5 @@
 data "aws_ami" "joindevops" {
-  most_recent = true
+    most_recent = true
     owners = ["973714476881"]
 
   filter {
@@ -8,8 +8,8 @@ data "aws_ami" "joindevops" {
   }
 
   filter {
-    name   = "Root device type"
-    values = ["EBS"]
+    name   = "root-device-type"
+    values = ["ebs"]
   }
   filter {
     name   = "virtualization-type"
