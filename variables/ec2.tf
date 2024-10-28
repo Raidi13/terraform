@@ -11,7 +11,7 @@ resource "aws_security_group" "allow_ssh_terraform" {
     description = var.sg_description
 
 #egress outgoing tarffic we allow everything in egress
-egress {
+egress { #block
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
@@ -30,3 +30,7 @@ egress {
     tags = var.tags
 }
 
+
+
+
+ 
