@@ -37,11 +37,9 @@
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = merge(
-      var.common_tags,
-      {
+  tags = {
       Name = "allow_sshh"
     }
-  )
+  
     
 }
