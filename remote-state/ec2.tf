@@ -1,9 +1,6 @@
-# Use the existing security group in your resources (e.g., EC2 instance)
 resource "aws_instance" "terraform" {
   ami           = "ami-09c813fb71547fc4f"
   instance_type = "t3.micro"
-
-  # Use the security group ID from the data source
   vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id]
   tags = {
     Name = "terraform"

@@ -5,12 +5,12 @@ terraform {
       version = "5.68.0"
     }
   }
-  
+  #remote state
   backend "s3" {
     bucket = "aws-raidi-state"
     key    = "remote-state-demo"
     region = "us-east-1"
-    dynamodb_table = "aws-locking"
+    dynamodb_table = "aws-locking" # locking 
   }
 }
 
