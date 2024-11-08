@@ -4,9 +4,10 @@ variable "instance_names" {
 
 }
 variable "common_tags" {
-  type =map
+  type = map 
   default = {
-    project = "expense"
-    Enviroment = "dev"
+    Project= "expense"
+    Environment = "dev"
+    TerrAFORM= "true"
   }
 }

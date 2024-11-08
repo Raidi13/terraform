@@ -9,3 +9,4 @@ resource "aws_route53_record" "expense" {
 
 }
 
+# r53 we should get the output of ec2 instanced created.

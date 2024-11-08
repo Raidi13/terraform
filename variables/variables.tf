@@ -44,5 +44,3 @@ variable "ingress_cidr" {
 
 }
 
-
-

@@ -11,4 +11,9 @@ data "aws_ami" "ami_info" {
     name   = "root-device-type"
     values = ["ebs"]
   }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
 }
+

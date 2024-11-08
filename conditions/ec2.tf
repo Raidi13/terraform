@@ -2,7 +2,7 @@
   resource "aws_instance" "terraform" {
     
     ami           = "ami-09c813fb71547fc4f"
-    instance_type = var.environment == "prod" ? "t3.small" : "t3.micro"
+    instance_type = var.environment == "prod" ? "t3.small": "t3.micro"
     vpc_security_group_ids = [aws_security_group.allow_sshh_terraform.id] # Use the security group ID from the data source
     tags = {
     Name = "terraform"

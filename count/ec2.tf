@@ -7,13 +7,13 @@
     # tags = {
     # Name = var.instance_names[count.index]
     # }
-    tags = merge(
-      var.common_tags,
-      {
-      Name = var.instance_names[count.index]
+   tags=merge (
+    var.common_tags, 
+    {
+      Name= var.instance_names[count.index]
     }
-    )
-
+    
+   )
 } 
   resource "aws_security_group" "allow_sshh_terraform" {
     name   = "allow_sshh"
@@ -37,10 +37,10 @@
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = merge(
-      var.common_tags,
-      {
-      Name = "allow_sshh_raidi"
-    }
-    )
+ tags = merge (
+  var.common_tags,
+  {
+    Name= "allow_sshh"
+  }
+ )
   }
