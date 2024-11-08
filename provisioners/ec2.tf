@@ -20,12 +20,20 @@ resource "aws_instance" "terraform" {
     host     = self.public_ip
   }
   #   #Provision will execute at the time of creation
-  # provisioner "remote-exec" {
-  #     when = destroy
-  #     inline = [
-  #     "sudo systemctl stop nginx",
-  #   ]
-  # }
+  provisioner "remote-exec" {
+      #when = destroy
+      inline = [
+      "sudo dnf install ansible -y",
+      "sudo dnf install nginx -y",
+      "sudo systemctl start nginx ",
+    ]
+  }
+    provisioner "remote-exec" {
+      when = destroy
+      inline = [
+        "sudo systemctl stop nginx"
+      ]
+}
 }
 
 # security group configuration
@@ -43,6 +51,13 @@ resource "aws_security_group" "allow_sshh_terraform" {
   }
 
   # Ingress - allow incoming traffic on port 22 (SSH)
+    ingress {
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"] # Allow from everywhere
+    ipv6_cidr_blocks = ["::/0"]
+  }
   ingress {
     from_port        = 80
     to_port          = 80

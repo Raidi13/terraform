@@ -24,16 +24,18 @@ resource "aws_security_group" "allow_ssh_terraform" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  # Ingress - allow incoming traffic on port 22 (SSH)
-  ingress {
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"] # Allow from everywhere
-    ipv6_cidr_blocks = ["::/0"]
-  }
+  # terraform will give us a variable with block name
 
-  tags = {
+   dynamic "ingress" {
+    for_each = var.ingress_rules
+    content {
+    from_port        = ingress.value["from_port"] 
+    to_port          = ingress.value["to_port"]
+    protocol         = ingress.value["protocol"]
+    cidr_blocks      = ingress.value["cidr_blocks"] # Allow from everywhere
+    }
+  }
+tags = {
      Name = "allow_sshh"
   }
 }
