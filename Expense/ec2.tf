@@ -13,8 +13,8 @@
       Name = var.instance_names[count.index]
     }
     )
-
 } 
+
   resource "aws_security_group" "allow_sshh_terraform" {
     name   = "allow_sshh"
     description = "Allow port number 22 for SSH access"
