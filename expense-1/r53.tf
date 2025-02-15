@@ -10,3 +10,7 @@ resource "aws_route53_record" "expense" {
 }
 
 # r53 we should get the output of ec2 instanced created.
+
+#var.instance_name[count.index] == "frontend" ? var.domain_name : "$ {var.instance_name[count.index].$[var.domain_name]}
+
+#var.instance_name[count.index] == "frontend" ? [aws.instance.terraform[count.index].public_ip] : [aws_instance_terraform[count.index].private.ip]

@@ -8,7 +8,7 @@ resource "aws_instance" "expense" {
   }
 }
 
-resource "aws_security_group" "allow_ssh_terraform" {
+resource "aws_security_group" "allow_sshh" {
   name        = "allow_sshh"
   description = "Allow port number 22 for SSH access"
 
