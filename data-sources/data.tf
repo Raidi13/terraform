@@ -16,5 +16,3 @@ data "aws_ami" "joindevops" {
     values = ["hvm"]
   }
 }
-
-
