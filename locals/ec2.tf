@@ -41,7 +41,7 @@ resource "aws_security_group" "allow_ssh_terraform" {
 
 resource "aws_instance" "elasticsearch" {
   ami = data.aws_ami.ami_info.id
-  instance_type = local.instance_type
+  instance_type = var.environment == "prod" ? "t3.micro" : "t3.small"
   vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id]
   tags = {
     Name = "terraform"
